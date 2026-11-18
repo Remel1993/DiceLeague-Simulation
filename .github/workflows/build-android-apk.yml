@@ -24,6 +24,14 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
+      - name: Set up Android SDK & Accept Licenses
+        uses: android-actions/setup-android@v3
+
+      - name: Install Android SDK 36 & Build Tools (Capacitor 8)
+        run: |
+          yes | sdkmanager --licenses >/dev/null 2>&1 || true
+          yes | sdkmanager "platform-tools" "platforms;android-36" "build-tools;36.0.0"
+
       - name: Install Web Dependencies & Build Offline Bundle
         run: |
           if [ -f package-lock.json ]; then
@@ -57,7 +65,7 @@ jobs:
         run: |
           cd android
           chmod +x gradlew
-          ./gradlew assembleDebug
+          ./gradlew assembleDebug --no-daemon
 
       - name: Prepare APK Artifact
         run: |
