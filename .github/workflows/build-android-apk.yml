@@ -24,13 +24,19 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
-      - name: Set up Android SDK & Accept Licenses
-        uses: android-actions/setup-android@v3
-
-      - name: Install Android SDK 36 & Build Tools (Capacitor 8)
+      - name: Install Android SDK 36 & Accept Licenses
         run: |
-          yes | sdkmanager --licenses >/dev/null 2>&1 || true
-          yes | sdkmanager "platform-tools" "platforms;android-36" "build-tools;36.0.0"
+          SDK_DIR="${ANDROID_HOME:-${ANDROID_SDK_ROOT:-/usr/local/lib/android/sdk}}"
+          SDKMANAGER=$(command -v sdkmanager || find "$SDK_DIR" -name sdkmanager -type f 2>/dev/null | head -n 1)
+          if [ -z "$SDKMANAGER" ]; then
+            echo "sdkmanager not found under $SDK_DIR"
+            exit 1
+          fi
+          echo "ANDROID_HOME=$SDK_DIR" >> "$GITHUB_ENV"
+          echo "ANDROID_SDK_ROOT=$SDK_DIR" >> "$GITHUB_ENV"
+          echo "Using sdkmanager: $SDKMANAGER"
+          (yes || true) | "$SDKMANAGER" --sdk_root="$SDK_DIR" --licenses >/dev/null 2>&1 || true
+          (yes || true) | "$SDKMANAGER" --sdk_root="$SDK_DIR" "platform-tools" "platforms;android-36" "build-tools;36.0.0"
 
       - name: Install Web Dependencies & Build Offline Bundle
         run: |
@@ -65,7 +71,7 @@ jobs:
         run: |
           cd android
           chmod +x gradlew
-          ./gradlew assembleDebug --no-daemon
+          ./gradlew assembleDebug --no-daemon --stacktrace
 
       - name: Prepare APK Artifact
         run: |
