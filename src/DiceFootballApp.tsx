@@ -72,9 +72,9 @@ import { SeasonCalendarModal } from '@/components/SeasonCalendarModal';
 import TopWinnersTable from '@/components/TopWinnersTable';
 import { CompetitionLogo } from '@/components/CompetitionLogo';
 
-import championsStadiumBg from '@/assets/images/champions_league_stadium_1786921289637.jpg';
-import worldCupStadiumDayBg from '@/assets/images/world_cup_stadium_day_1786921535635.jpg';
-import careerGrassGoalBg from '@/assets/images/career_pitch_background_1787435795856.jpg';
+const championsStadiumBg = '/src/assets/images/champions_league_stadium_1786921289637.jpg';
+const worldCupStadiumDayBg = '/src/assets/images/world_cup_stadium_day_1786921535635.jpg';
+const careerGrassGoalBg = '/src/assets/images/career_pitch_background_1787435795856.jpg';
 
 function DiceFootballApp() {
   const [view, setView] = useState('hub');

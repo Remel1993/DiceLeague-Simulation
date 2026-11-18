@@ -18,8 +18,6 @@ import {
   getWeekForLeagueMatchday, getExpectedCupMatchdayForWeek
 } from '@/lib/seasonCalendar';
 import { divTotalRounds, leagueTotalRounds, leagueSeasonOver, leagueProgressLabel } from '@/lib/leagueEngine';
-import championsStadiumBg from '@/assets/images/champions_league_stadium_1786921289637.jpg';
-import worldCupStadiumDayBg from '@/assets/images/world_cup_stadium_day_1786921535635.jpg';
 
 export const HubView = ({ 
   setView, 
