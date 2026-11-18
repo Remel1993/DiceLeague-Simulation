@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="skyNight" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#020617"/>
+      <stop offset="48%" stop-color="#0b1736"/>
+      <stop offset="100%" stop-color="#041224"/>
+    </linearGradient>
+    <radialGradient id="stadiumGlow" cx="50%" cy="46%" r="55%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.35"/>
+      <stop offset="45%" stop-color="#1d4ed8" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#020617" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="beamLeft" cx="18%" cy="18%" r="55%">
+      <stop offset="0%" stop-color="#e0f2fe" stop-opacity="0.55"/>
+      <stop offset="35%" stop-color="#38bdf8" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#020617" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="beamRight" cx="82%" cy="18%" r="55%">
+      <stop offset="0%" stop-color="#e0f2fe" stop-opacity="0.55"/>
+      <stop offset="35%" stop-color="#38bdf8" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#020617" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="turfNight" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#064e3b"/>
+      <stop offset="50%" stop-color="#065f46"/>
+      <stop offset="100%" stop-color="#022c22"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#skyNight)"/>
+  <rect width="1600" height="900" fill="url(#stadiumGlow)"/>
+
+  <!-- Stadium Roof & Bowl Arches -->
+  <path d="M0 320 Q800 130 1600 320 L1600 540 L0 540 Z" fill="#0b1224" opacity="0.92"/>
+  <path d="M40 340 Q800 165 1560 340" stroke="#38bdf8" stroke-opacity="0.35" stroke-width="3" fill="none"/>
+  <path d="M0 390 Q800 220 1600 390" stroke="#60a5fa" stroke-opacity="0.22" stroke-width="2" fill="none"/>
+  <path d="M0 445 Q800 285 1600 445" stroke="#93c5fd" stroke-opacity="0.18" stroke-width="2" fill="none"/>
+
+  <!-- Crowd Tiers -->
+  <path d="M0 490 Q800 350 1600 490 L1600 620 L0 620 Z" fill="#0f172a"/>
+  <g fill="#93c5fd" opacity="0.35">
+    <circle cx="220" cy="445" r="2"/><circle cx="310" cy="430" r="1.5"/><circle cx="460" cy="410" r="2"/>
+    <circle cx="620" cy="395" r="1.8"/><circle cx="780" cy="388" r="2.2"/><circle cx="940" cy="394" r="1.8"/>
+    <circle cx="1110" cy="408" r="2"/><circle cx="1290" cy="428" r="1.8"/><circle cx="1410" cy="446" r="2"/>
+    <circle cx="380" cy="470" r="1.5"/><circle cx="540" cy="455" r="2"/><circle cx="710" cy="442" r="1.5"/>
+    <circle cx="880" cy="442" r="2"/><circle cx="1040" cy="454" r="1.5"/><circle cx="1200" cy="468" r="2"/>
+  </g>
+
+  <!-- Floodlight Towers & Beams -->
+  <polygon points="280,150 560,560 120,560" fill="url(#beamLeft)" opacity="0.55"/>
+  <polygon points="1320,150 1480,560 1040,560" fill="url(#beamRight)" opacity="0.55"/>
+  <rect x="245" y="135" width="70" height="22" rx="6" fill="#e0f2fe" opacity="0.9"/>
+  <rect x="1285" y="135" width="70" height="22" rx="6" fill="#e0f2fe" opacity="0.9"/>
+  <circle cx="280" cy="146" r="65" fill="url(#beamLeft)"/>
+  <circle cx="1320" cy="146" r="65" fill="url(#beamRight)"/>
+
+  <!-- Night Pitch Perspective -->
+  <polygon points="0,610 1600,610 1600,900 0,900" fill="url(#turfNight)"/>
+  <g opacity="0.16" fill="#34d399">
+    <polygon points="140,610 300,610 120,900 -80,900"/>
+    <polygon points="460,610 620,610 520,900 320,900"/>
+    <polygon points="780,610 940,610 960,900 760,900"/>
+    <polygon points="1100,610 1260,610 1380,900 1180,900"/>
+    <polygon points="1420,610 1580,610 1760,900 1560,900"/>
+  </g>
+
+  <!-- Pitch Markings -->
+  <line x1="0" y1="612" x2="1600" y2="612" stroke="#ffffff" stroke-opacity="0.35" stroke-width="3"/>
+  <ellipse cx="800" cy="755" rx="220" ry="62" stroke="#ffffff" stroke-opacity="0.35" stroke-width="3" fill="none"/>
+  <circle cx="800" cy="755" r="6" fill="#ffffff" fill-opacity="0.5"/>
+  <line x1="800" y1="612" x2="800" y2="900" stroke="#ffffff" stroke-opacity="0.28" stroke-width="3"/>
+</svg>

@@ -8470,7 +8470,7 @@ function DiceFootballApp() {
         className={`fixed inset-0 bg-cover bg-center bg-no-repeat z-0 scale-105 transition-all duration-700 ${
           isWorldCupActive || isCareerActive ? 'opacity-0 pointer-events-none' : 'opacity-100'
         }`}
-        style={{ backgroundImage: `url(${championsStadiumBg})` }}
+        style={{ backgroundImage: `url(${championsStadiumBg}), url('/backgrounds/champions-stadium.svg')` }}
       />
 
       {/* World Cup Daytime Stadium Background with Lush Grass (Only in World Cup Interface) */}
@@ -8478,7 +8478,7 @@ function DiceFootballApp() {
         className={`fixed inset-0 bg-cover bg-center bg-no-repeat z-0 scale-105 transition-all duration-700 ${
           isWorldCupActive && !isCareerActive ? 'opacity-100' : 'opacity-0 pointer-events-none'
         }`}
-        style={{ backgroundImage: `url(${worldCupStadiumDayBg})` }}
+        style={{ backgroundImage: `url(${worldCupStadiumDayBg}), url('/backgrounds/worldcup-stadium.svg')` }}
       />
 
       {/* Career Mode Background: Pristine Grass Pitch with Ball near the Goalpost */}
@@ -8486,7 +8486,7 @@ function DiceFootballApp() {
         className={`fixed inset-0 bg-cover bg-center bg-no-repeat z-0 scale-105 transition-all duration-700 ${
           isCareerActive ? 'opacity-100' : 'opacity-0 pointer-events-none'
         }`}
-        style={{ backgroundImage: `url(${careerGrassGoalBg})` }}
+        style={{ backgroundImage: `url(${careerGrassGoalBg}), url('/backgrounds/career-pitch.svg')` }}
       />
 
       {/* Lighting & Atmosphere Layers: Clean, Subtle, Dark Stadium Vignette */}

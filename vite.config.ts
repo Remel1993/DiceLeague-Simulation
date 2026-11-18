@@ -13,6 +13,23 @@ export default defineConfig(() => {
     plugins: [
       react(),
       tailwindcss(),
+      // Copies src/assets into dist/ so root-relative URLs like
+      // "/src/assets/images/..." still resolve in production builds.
+      {
+        name: 'copy-unbundled-src-assets',
+        apply: 'build' as const,
+        closeBundle(error?: Error): void {
+          if (error) {
+            return;
+          }
+          const distDir = path.resolve(rootDir, 'dist');
+          const srcAssets = path.resolve(rootDir, 'src/assets');
+          const distAssets = path.resolve(distDir, 'src/assets');
+          if (fs.existsSync(distDir) && fs.existsSync(srcAssets)) {
+            fs.cpSync(srcAssets, distAssets, {recursive: true, force: true});
+          }
+        },
+      },
       VitePWA({
         registerType: 'autoUpdate',
         includeAssets: [
@@ -21,6 +38,7 @@ export default defineConfig(() => {
           'pwa-192x192.png',
           'pwa-512x512.png',
           'pwa-maskable-512x512.png',
+          'backgrounds/*.svg',
         ],
         manifest: {
           id: '/',
@@ -115,24 +133,6 @@ export default defineConfig(() => {
           navigateFallback: 'index.html',
         },
       }),
-      // Copies src/assets into dist/ so root-relative URLs like
-      // "/src/assets/images/..." (e.g. generate_image output) still resolve
-      // in production builds. Do not remove.
-      {
-        name: 'copy-unbundled-src-assets',
-        apply: 'build' as const,
-        closeBundle(error?: Error): void {
-          if (error) {
-            return;
-          }
-          const distDir = path.resolve(rootDir, 'dist');
-          const srcAssets = path.resolve(rootDir, 'src/assets');
-          const distAssets = path.resolve(distDir, 'src/assets');
-          if (fs.existsSync(distDir) && fs.existsSync(srcAssets)) {
-            fs.cpSync(srcAssets, distAssets, {recursive: true, force: true});
-          }
-        },
-      },
     ],
     resolve: {
       alias: {

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="skyDay" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0c4a6e"/>
+      <stop offset="50%" stop-color="#0369a1"/>
+      <stop offset="100%" stop-color="#1e3a8a"/>
+    </linearGradient>
+    <radialGradient id="sunGlow" cx="72%" cy="22%" r="48%">
+      <stop offset="0%" stop-color="#fef08a" stop-opacity="0.75"/>
+      <stop offset="35%" stop-color="#fbbf24" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#0369a1" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="turfDay" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#047857"/>
+      <stop offset="55%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#064e3b"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#skyDay)"/>
+  <rect width="1600" height="900" fill="url(#sunGlow)"/>
+
+  <!-- Grandstand Silhouette -->
+  <path d="M0 330 Q800 185 1600 330 L1600 570 L0 570 Z" fill="#0f172a" opacity="0.82"/>
+  <path d="M0 365 Q800 225 1600 365" stroke="#fbbf24" stroke-opacity="0.35" stroke-width="3" fill="none"/>
+  <path d="M0 430 Q800 300 1600 430" stroke="#38bdf8" stroke-opacity="0.22" stroke-width="2" fill="none"/>
+  <path d="M0 500 Q800 385 1600 500 L1600 595 L0 595 Z" fill="#1e293b" opacity="0.9"/>
+
+  <!-- Lush Daytime Turf -->
+  <polygon points="0,585 1600,585 1600,900 0,900" fill="url(#turfDay)"/>
+  <g opacity="0.22" fill="#6ee7b7">
+    <polygon points="100,585 260,585 90,900 -90,900"/>
+    <polygon points="420,585 580,585 480,900 280,900"/>
+    <polygon points="740,585 900,585 920,900 720,900"/>
+    <polygon points="1060,585 1220,585 1340,900 1140,900"/>
+    <polygon points="1380,585 1540,585 1720,900 1520,900"/>
+  </g>
+
+  <!-- Crisp White Field Lines -->
+  <line x1="0" y1="588" x2="1600" y2="588" stroke="#ffffff" stroke-opacity="0.45" stroke-width="3"/>
+  <ellipse cx="800" cy="740" rx="235" ry="66" stroke="#ffffff" stroke-opacity="0.45" stroke-width="3" fill="none"/>
+  <line x1="800" y1="588" x2="800" y2="900" stroke="#ffffff" stroke-opacity="0.35" stroke-width="3"/>
+</svg>
