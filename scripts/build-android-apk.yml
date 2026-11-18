@@ -24,6 +24,20 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
+      - name: Install Android SDK 36 & Accept Licenses
+        run: |
+          SDK_DIR="${ANDROID_HOME:-${ANDROID_SDK_ROOT:-/usr/local/lib/android/sdk}}"
+          SDKMANAGER=$(command -v sdkmanager || find "$SDK_DIR" -name sdkmanager -type f 2>/dev/null | head -n 1)
+          if [ -z "$SDKMANAGER" ]; then
+            echo "sdkmanager not found under $SDK_DIR"
+            exit 1
+          fi
+          echo "ANDROID_HOME=$SDK_DIR" >> "$GITHUB_ENV"
+          echo "ANDROID_SDK_ROOT=$SDK_DIR" >> "$GITHUB_ENV"
+          echo "Using sdkmanager: $SDKMANAGER"
+          (yes || true) | "$SDKMANAGER" --sdk_root="$SDK_DIR" --licenses >/dev/null 2>&1 || true
+          (yes || true) | "$SDKMANAGER" --sdk_root="$SDK_DIR" "platform-tools" "platforms;android-36" "build-tools;36.0.0"
+
       - name: Install Web Dependencies & Build Offline Bundle
         run: |
           if [ -f package-lock.json ]; then
@@ -37,11 +51,11 @@ jobs:
         run: npm install --no-save @capacitor/core @capacitor/cli @capacitor/android @capacitor/assets
 
       - name: Prepare App Icons for Android
-        continue-on-error: true
         run: |
           mkdir -p assets
           cp public/pwa-512x512.png assets/icon-only.png
-          cp public/pwa-512x512.png assets/icon-foreground.png
+          cp public/pwa-maskable-512x512.png assets/icon-foreground.png
+          node -e "require('sharp')({create:{width:512,height:512,channels:4,background:'#030b1c'}}).png().toFile('assets/icon-background.png')" || cp public/pwa-512x512.png assets/icon-background.png
           cp public/pwa-512x512.png assets/splash.png
           cp public/pwa-512x512.png assets/splash-dark.png
 
@@ -57,7 +71,7 @@ jobs:
         run: |
           cd android
           chmod +x gradlew
-          ./gradlew assembleDebug
+          ./gradlew assembleDebug --no-daemon --stacktrace
 
       - name: Prepare APK Artifact
         run: |
