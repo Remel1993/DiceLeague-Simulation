@@ -1,10 +1,11 @@
 {
+  "installCommand": "npm install",
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "framework": "vite",
   "rewrites": [
     {
-      "source": "/(.*)",
+      "source": "/((?!assets/|crests/|logos/|src/|sw\\.js|workbox-.*\\.js|manifest\\.webmanifest|icon\\.svg|.*\\.(?:png|jpg|jpeg|svg|webp|ico|js|css|woff2?)).*)",
       "destination": "/index.html"
     }
   ],
